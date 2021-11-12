@@ -9,6 +9,8 @@ use App\Setting;
 use App\Reservation;
 use Storage;
 use Dompdf\Dompdf;
+Use Alert;
+
 use Illuminate\Http\Request;
 use Response;
 
@@ -196,6 +198,8 @@ class HomeController extends Controller
     public function welcome()
     {
         $hotels = Hotel::all();
+        Alert::success('C\'est Fait', 'Votre Réservation a été efféctué Message');
+
         return view('index',compact('hotels'));
     }
 

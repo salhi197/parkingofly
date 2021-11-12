@@ -7,51 +7,27 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
-
-  <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
   <link href="{{asset('front/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-  <!-- Libraries CSS Files -->
   <link href="{{asset('front/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{asset('front/lib/animate/animate.min.css')}}" rel="stylesheet">
   <link href="{{asset('front/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('front/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('front/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
   <link href="{{asset('front/css/style.css')}}" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: NewBiz
-    Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
 
-  <!--==========================
-  Header
-  ============================-->
+  <!--========================== Header ============================-->
   <header id="header" class="fixed-top">
     <div class="container">
-
       <div class="logo float-left">
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
         <a href="#intro" class="scrollto">Parkingo fly<img src="img/" alt="" class="img-fluid"></a>
       </div>
-
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="#intro">Accueil</a></li>
@@ -69,18 +45,23 @@
     Intro Section
   ============================-->
 
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success">
+          Votre Réservation a été efféctué
+        </div>
+
+      </div>
+  </div>
   <section id="intro" class="clearfix">
     <div class="container">
-
       <div class="intro-img">
         <img src="img/" alt="" class="img-fluid">
       </div>
       <div class="intro-info">
         <h2>Parkingo Fly<br><span>solutions Idéal</span><br>pour votre voiture!</h2>
         <div class="container">
-<br><br><br><br>
+        <br><br><br><br>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="flight-engine">
                <div class="container">
@@ -228,7 +209,6 @@
 
         <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp">
-            <img src="img/about-extra-1.svg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
             <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
@@ -736,49 +716,41 @@
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-1.png" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-2.png" class="img-fluid" alt="">
             </div>
           </div>
         
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-3.png" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-4.png" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-5.png" class="img-fluid" alt="">
             </div>
           </div>
         
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-6.png" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-7.png" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="img/clients/client-8.png" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -933,8 +905,8 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- JavaScript Libraries -->
-  <script src="{{asset('front/lib/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('front/lib/jquery/jquery-migrate.min.js')}}"></script>
+    <script src="{{asset('mart/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('mart/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('front/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('front/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('front/lib/mobile-nav/mobile-nav.js')}}"></script>
@@ -944,11 +916,11 @@
   <script src="{{asset('front/lib/owlcarousel/owl.carousel.min.js')}}"></script>
   <script src="{{asset('front/lib/isotope/isotope.pkgd.min.js')}}"></script>
   <script src="{{asset('front/lib/lightbox/js/lightbox.min.js')}}"></script>
+  @include('sweetalert::alert')
+
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="{{asset('js/main.js')}}"></script>
 
 </body>
 </html>

@@ -14,6 +14,8 @@ use App\Setting;
 use App\Payment;
 use Illuminate\Http\Request;
 use DB;
+Use Alert;
+
 class ReservationController extends Controller
 {
     public function valider($reservation_id)
@@ -185,6 +187,8 @@ class ReservationController extends Controller
         $reservation->fin = $request['fin'];
         $reservation->save();
   
+        Alert::success('Success Title', 'Success Message');
+
         return redirect()->route('welcome')->with('success', 'reservation inséré avec succés ');
     }
 

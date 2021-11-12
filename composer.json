@@ -13,6 +13,7 @@
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^3.2.0",
         "laravel/tinker": "^1.0",
+        "realrashid/sweet-alert": "^4.1",
         "snowfire/beautymail": "^1.1"
     },
     "require-dev": {

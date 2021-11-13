@@ -1,7 +1,6 @@
 @extends('beautymail::templates.minty')
 
 @section('content')
-
 	@include('beautymail::templates.minty.contentStart')
 		<tr>
 			<td class="title">
@@ -13,7 +12,7 @@
 		</tr>
 		<tr>
 			<td class="paragraph">
-				Vous avez Effectuer une réservation dans notre site parkingofly 
+				Vous avez Effectuer une réservation dans notre site parkingofly avec 
 			</td>
 		</tr>
 		<tr>

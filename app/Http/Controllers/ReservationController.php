@@ -39,6 +39,8 @@ class ReservationController extends Controller
             $message->to($data['email'])
             ->subject('Ticket de reservation');
           });
+        Alert::success('C\'est Fait', 'La Réservation a été Validé et un email a été envoyé ! ');
+
         return redirect()->route('reservation.index')->with('success', 'Reservation a été Validé ');
         
     }
@@ -187,7 +189,7 @@ class ReservationController extends Controller
         $reservation->fin = $request['fin'];
         $reservation->save();
   
-        Alert::success('Success Title', 'Success Message');
+        Alert::success('C\'est Fait', 'Votre Réservation a été efféctué Message');
 
         return redirect()->route('welcome')->with('success', 'reservation inséré avec succés ');
     }

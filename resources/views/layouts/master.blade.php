@@ -124,6 +124,7 @@
     <script src="{{asset('js/datatable-basic.init.js')}}"></script>
     <script src="{{asset('js/dynamic-form.js')}}"></script>
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    @include('sweetalert::alert')
 
     <script>
         @if(session('success'))

@@ -33,6 +33,7 @@ class LoginController extends Controller
             ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))       
             ->user();
 
+        return $user->name;
     }    
 
     use AuthenticatesUsers;

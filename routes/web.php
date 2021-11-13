@@ -20,6 +20,9 @@ Route::get('/mail', function(){
 Route::get('login/google', 'Auth\LoginController@redirectToProvider');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('login/facebook', 'Auth\LoginController@redirectToProviderFacebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallbackFacebook');
+
 
 Route::group(['prefix' => 'reservation', 'as' => 'reservation'], function () {
     Route::get('/', ['as' => '.index', 'uses' => 'ReservationController@index']);

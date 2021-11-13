@@ -60,6 +60,11 @@ return [
         'client_secret' => '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',
         'redirect' => 'http://localhost:8000/login/google/callback',
     ],
+    'facebook' => [
+        'client_id' => '4652758041434599',
+        'client_secret' => '229bb13c3e4cbee409f39942ab690894',
+        'redirect' => 'http://localhost:8000/login/facebook/callback',
+    ],
 
 
 

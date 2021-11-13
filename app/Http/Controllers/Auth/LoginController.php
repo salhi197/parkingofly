@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
+
+use App\User;
 use Socialite;
 use Illuminate\Support\Facades\Config;
 
@@ -22,6 +25,44 @@ class LoginController extends Controller
     |
     */
 
+    public function redirectToProviderFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+
+
+    public function handleProviderCallbackFacebook()
+    {
+            try {
+    
+                $user = Socialite::driver('facebook')->stateless()
+                    ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))       
+                    ->user();
+             
+                $finduser = User::where('facebook_id', $user->id)->first();
+         
+                if($finduser){
+                    Auth::login($finduser);
+                    return redirect('/home');
+        
+                }else{
+                    $newUser = User::create([
+                        'nom_prenom' => $user->name,
+                        'email' => $user->email,
+                        'facebook_id'=> $user->id,
+                        'password' => Hash::make('12345678')
+                    ]);
+
+                    Auth::login($newUser);
+                    return redirect('/home');
+                }
+        
+            } catch (Exception $e) {
+                dd($e->getMessage());
+            }
+
+    }        
     public function redirectToProvider()
     {
         return Socialite::driver('google')->redirect();
@@ -29,11 +70,34 @@ class LoginController extends Controller
 
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->stateless()
-            ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))       
-            ->user();
+            try {
+    
+                $user = Socialite::driver('google')->stateless()
+                    ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))       
+                    ->user();
+             
+                $finduser = User::where('google_id', $user->id)->first();
+         
+                if($finduser){
+                    Auth::login($finduser);
+                    return redirect('/home');
+        
+                }else{
+                    $newUser = User::create([
+                        'nom_prenom' => $user->name,
+                        'email' => $user->email,
+                        'google_id'=> $user->id,
+                        'password' => Hash::make('12345678')
+                    ]);
 
-        return $user->name;
+                    Auth::login($newUser);
+                    return redirect('/home');
+                }
+        
+            } catch (Exception $e) {
+                dd($e->getMessage());
+            }
+
     }    
 
     use AuthenticatesUsers;

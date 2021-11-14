@@ -14,7 +14,7 @@ use App\Setting;
 use App\Payment;
 use Illuminate\Http\Request;
 use DB;
-Use Alert;
+use Alert;
 
 class ReservationController extends Controller
 {
@@ -25,57 +25,56 @@ class ReservationController extends Controller
         $reservation->save();
         $data = [
             'subject' => 'Ticket de Reservation',
-            'email' => "salhiali197@gmail.com",//à remplacer par user email
+            'email' => "h.informatique7@gmail.com", //à remplacer par user email
             'content' => "Hi there Hhhh",
-            'qrcode'=>$reservation->qrcode,
-            'ticket'=>$reservation->ticket,
-            'debut'=>$reservation->debut,
-            'fin'=>$reservation->fin       
-          ];
-        $logo=[
-            'path'=>''
+            'qrcode' => $reservation->qrcode,
+            'ticket' => $reservation->ticket,
+            'debut' => $reservation->debut,
+            'fin' => $reservation->fin
         ];
-        Mail::send('email', ['data'=>$data,'css'=>'','logo'=>$logo,'unsubscribe'=>''], function($message) use ($data) {
+        $logo = [
+            'path' => ''
+        ];
+        Mail::send('email', ['data' => $data, 'css' => '', 'logo' => $logo, 'unsubscribe' => ''], function ($message) use ($data) {
             $message->to($data['email'])
-            ->subject('Ticket de reservation');
-          });
+                ->subject('Ticket de reservation');
+        });
         Alert::success('C\'est Fait', 'La Réservation a été Validé et un email a été envoyé ! ');
 
         return redirect()->route('reservation.index')->with('success', 'Reservation a été Validé ');
-        
     }
     public function filter(Request $request)
     {
         $result = Reservation::query();
-        $date_fin="";
-        $date_debut="";
+        $date_fin = "";
+        $date_debut = "";
 
         if (!empty($request['date_debut'])) {
-            $date_debut=$request['date_debut'];    
+            $date_debut = $request['date_debut'];
             $result = $result->whereDate('debut', '>=', $request['date_debut']);
         }
-    
+
         if (!empty($request['date_fin'])) {
-            $date_fin=$request['date_fin'];    
+            $date_fin = $request['date_fin'];
             $result = $result->whereDate('fin', '<=', $request['date_fin']);
         }
 
         if (!empty($request['etat'])) {
-            $date_fin=$request['date_fin'];    
+            $date_fin = $request['date_fin'];
             $result = $result->where('etat', '=', $request['etat']);
         }
 
         if (!empty($request['hotel'])) {
-            $date_fin=$request['hotel'];    
+            $date_fin = $request['hotel'];
             $result = $result->where('fin', '=', $request['hotel']);
         }
         $reservations = $result->get();
-        return view('reservations.index',compact('reservations',
+        return view('reservations.index', compact(
+            'reservations',
             'state',
             'date_debut',
             'date_fin'
         ));
-
     }
 
     public function search(Request $request)
@@ -94,21 +93,22 @@ class ReservationController extends Controller
         //         ($debut=>debut and $fin<=fin)
         //     );
         //     ");
-        
+
         $places = DB::select("SELECT * from places p where hotel=1 and p.id not in (select place from reservations r where debut>$debut and fin<$fin);");
 
         $debut = Carbon::parse($debut);
         $fin = Carbon::parse($fin);
         $diff = $debut->diffInDays($fin);
-        $total = $tarif*$diff;
+        $total = $tarif * $diff;
         $debut = $request['debut'];
         $fin = $request['fin'];
 
 
-        return view('reservations.create',compact('places',
-                "debut",
-                "fin",
-                "total"
+        return view('reservations.create', compact(
+            'places',
+            "debut",
+            "fin",
+            "total"
         ));
     }
 
@@ -118,10 +118,10 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::all();
-        $state ="-1";
-        $date_fin="";
-        $date_debut="";
-        return view('reservations.index',compact('reservations','state','date_debut','date_fin'));
+        $state = "-1";
+        $date_fin = "";
+        $date_debut = "";
+        return view('reservations.index', compact('reservations', 'state', 'date_debut', 'date_fin'));
     }
     public function create()
     {
@@ -134,22 +134,22 @@ class ReservationController extends Controller
         $dompdf = new Dompdf();
         $html = Template::templateTicket($reservation);
         $dompdf->loadHtml($html);
-        $customPaper = array(0,0,290,380);
+        $customPaper = array(0, 0, 290, 380);
         $dompdf->setPaper($customPaper);
         $dompdf->render();
-        $options = $dompdf->getOptions(); 
+        $options = $dompdf->getOptions();
         $options->set(array('isRemoteEnabled' => true));
         $dompdf->setOptions($options);
 
 
         $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
-        return view('reser$reservations.view',compact('produit'));
+        return view('reser$reservations.view', compact('produit'));
     }
     public function store(Request $request)
     {
-        $reservation = new Reservation();   
-        $reservation->hotel = $request['hotel'] ?? '';  
-        $reservation->place = $request['place'] ?? '1';      
+        $reservation = new Reservation();
+        $reservation->hotel = $request['hotel'] ?? '';
+        $reservation->place = $request['place'] ?? '1';
         $reservation->nom = $request['nom'];
         $reservation->prenom = $request['prenom'];
         $reservation->email = $request['email'];
@@ -161,22 +161,22 @@ class ReservationController extends Controller
         $date = date_create();
         $timestamp  = date_timestamp_get($date);
         $qrcode = $timestamp;
-        $url = env('APP_URL').'/storage/app/public/file_'.$qrcode.'.pdf';
-        \QrCode::generate($url, storage_path().'/app/public/qrcodes/'.$timestamp.'.svg');
+        $url = env('APP_URL') . '/storage/app/public/file_' . $qrcode . '.pdf';
+        \QrCode::generate($url, storage_path() . '/app/public/qrcodes/' . $timestamp . '.svg');
 
-        $url = env('APP_URL').'/qrcode/'.$qrcode;
+        $url = env('APP_URL') . '/qrcode/' . $qrcode;
         // Storage::put('public/file_'.$qrcode.'.pdf', $file);
-        $reservation->ticket = 'public/file_'.$qrcode.'.pdf';
+        $reservation->ticket = 'public/file_' . $qrcode . '.pdf';
         $reservation->qrcode = $timestamp;
         $setting = Setting::find(1);
         $tarif = $setting['value'];
 
-        $reservation->tarif = $tarif;        
+        $reservation->tarif = $tarif;
 
         $reservation->debut = $request['debut'];
         $reservation->fin = $request['fin'];
         $reservation->save();
-  
+
         Alert::success('C\'est Fait', 'Votre Réservation a été efféctué Message');
 
         return redirect()->route('welcome')->with('success', 'reservation inséré avec succés ');
@@ -194,13 +194,13 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::find($id_reservation);
         $reservation->delete();
-        return redirect()->route('reservation.index')->with('success', 'le Produit a été supprimé ');        
+        return redirect()->route('reservation.index')->with('success', 'le Produit a été supprimé ');
     }
 
-    public function setState($id_reservation,$state)
+    public function setState($id_reservation, $state)
     {
         $reservation = Reservation::find($id_reservation);
-        $reservation->state= $state;
+        $reservation->state = $state;
         $reservation->save();
         return redirect()->route('reservation.index')->with('success', 'Etat de Réservation a été changé  ');
     }
@@ -210,31 +210,31 @@ class ReservationController extends Controller
         $filtered  = 0;
         $total = Payment::sum('montant');
         $totalToday = Payment::where('created_at', '>=', Carbon::today())->sum('montant');
-        return view('reservations.caisse',compact('paiments','total','totalToday','filtered'));
+        return view('reservations.caisse', compact('paiments', 'total', 'totalToday', 'filtered'));
     }
     public function caisseFilter(Request $request)
     {
         $result = Payment::query();
-        $date_fin="";
-        $date_debut="";
+        $date_fin = "";
+        $date_debut = "";
 
         if (!empty($request['date_debut'])) {
-            $date_debut=$request['date_debut'];    
+            $date_debut = $request['date_debut'];
             $result = $result->whereDate('date_payment', '>=', $request['date_debut']);
         }
-    
+
         if (!empty($request['date_fin'])) {
-            $date_fin=$request['date_fin'];    
+            $date_fin = $request['date_fin'];
             $result = $result->whereDate('date_payment', '<=', $request['date_fin']);
         }
 
         if (!empty($request['etat'])) {
-            $date_fin=$request['date_fin'];    
+            $date_fin = $request['date_fin'];
             $result = $result->where('etat', '=', $request['etat']);
         }
 
         if (!empty($request['hotel'])) {
-            $date_fin=$request['hotel'];    
+            $date_fin = $request['hotel'];
             $result = $result->where('fin', '=', $request['hotel']);
         }
         $paiments = $result->get();
@@ -242,10 +242,6 @@ class ReservationController extends Controller
         $total = Payment::sum('montant');
         $totalToday = Payment::where('created_at', '>=', Carbon::today())->sum('montant');
 
-        return view('reservations.caisse',compact('paiments','total','totalToday','filtered'));
+        return view('reservations.caisse', compact('paiments', 'total', 'totalToday', 'filtered'));
     }
-
-
-
-
 }

@@ -35,8 +35,8 @@
           <li><a href="#portfolio">Hotels</a></li>
           <li><a href="#team">Contact</a></li>
             <div class="row">
-              <div class="col-md-6"> <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="/login/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Google</a> </div>
-              <div class="col-md-6"> <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="/login/facebook"><img src="https://img.icons8.com/color/16/000000/facebook.png"/> Signup Facebook</a> </div>
+
+              <div class="col-md-12"> <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="/login/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Google</a> </div>
             </div>
                             
           </li>

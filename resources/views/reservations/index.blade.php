@@ -155,72 +155,57 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td class="h6"><strong>Nom et Prénom</strong></td>
-                                                                                    <td> </td>
                                                                                     <td class="h5"></td>
                                                                                 </tr>
                                                                                 
                                                                                 <tr>
                                                                                     <td class="h6"><strong>Date et Heure D'entrée</strong></td>
-                                                                                    <td> </td>
                                                                                     <td class="h5"></td>
                                                                                 </tr>
                                                                                 
                                                                                 <tr>
                                                                                     <td class="h6"><strong>Date et Heure de Sortie</strong></td>
-                                                                                    <td> </td>
                                                                                     <td class="h5"></td>
                                                                                 </tr>
                                                                                 
                                                                                 <tr>
                                                                                     <td class="h6"><strong>Téléphone</strong></td>
-                                                                                    <td> </td>
                                                                                     <td class="h5">0230316</td>
                                                                                 </tr>
                                                                                 
                                                                                 <tr>
-                                                                                    <td class="h6"><strong>Email.M</strong></td>
-                                                                                    <td> </td>
+                                                                                    <td class="h6"><strong>Email</strong></td>
                                                                                     <td class="h5">032165</td>
                                                                                 </tr>
                                                                                 
                                                                                 <tr>
                                                                                     <td class="h6"><strong>Place </strong></td>
-                                                                                    <td> </td>
                                                                                     <td class="h5">0321649843</td>
                                                                                 </tr>  
 
                                                                                 <tr>
-                                                                                    <td class="h6"><strong>Unid. por Embalagem</strong></td>
-                                                                                    <td> </td>
-                                                                                    <td class="h5">50</td>
+                                                                                    <td class="h6"><strong>Plaque d'immatriculation</strong></td>
+                                                                                    <td class="h5">456789098765</td>
                                                                                 </tr>                            
 
                                                                                 <tr>
-                                                                                    <td class="h6"><strong>Quantidade Mínima</strong></td>
-                                                                                    <td> </td>
+                                                                                    <td class="h6"><strong>Marque</strong></td>
                                                                                     <td class="h5">50</td>
                                                                                 </tr>
-
-                                                                                <tr>
-                                                                                    <td class="h6"><strong>Preço Atacado</strong></td>
-                                                                                    <td> </td>
-                                                                                    <td class="h5">R$ 35,00</td>
-                                                                                </tr> 
+ 
                                                                             </tbody>
                                                                         </table>
                                                                                 
-                                                                        <div class="row content-center">
+                                                                        <div class="row">
                                                                             <div class="col-md-12"> 
-                                                                                <img src="https://beta.parkingo-fly.com/storage/app/public/qrcodes/1635944923.svg" alt="teste" class="img-thumbnail">  
+                                                                                <img src="/storage/app/public/qrcodes/1636877747.svg" alt="teste" class="img-thumbnail">  
                                                                             </div>                                                                        
                                                                         </div>
                                                                     </div>
 
 
                                                                     <div class="modal-footer">
-                                                                        <a class="btn btn-primary" target="_blink" href="
-                                                                        <?php echo '/storage/app/public/file_'.$reservation->qrcode.'.pdf' ?>
-                                                                        ">
+                                                                        <a class="btn btn-primary" target="_blink" href="{{route('reservation.ticket',['reservation'=>$reservation->id])}}">
                                                                             Ticket
                                                                         </a>
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -25,7 +25,7 @@ class ReservationController extends Controller
         $reservation->save();
         $data = [
             'subject' => 'Ticket de Reservation',
-            'email' => "salhihaider197@gmail.com",
+            'email' => "salhiali197@gmail.com",//à remplacer par user email
             'content' => "Hi there Hhhh",
             'qrcode'=>$reservation->qrcode,
             'ticket'=>$reservation->ticket,
@@ -33,7 +33,7 @@ class ReservationController extends Controller
             'fin'=>$reservation->fin       
           ];
         $logo=[
-            'path'=>'haider ali'
+            'path'=>''
         ];
         Mail::send('email', ['data'=>$data,'css'=>'','logo'=>$logo,'unsubscribe'=>''], function($message) use ($data) {
             $message->to($data['email'])
@@ -128,13 +128,14 @@ class ReservationController extends Controller
         return view('reservations.create');
     }
 
-    public function ticket()
+    public function ticket($id_reservation)
     {
-        $analyse = Analyse::find($id_analyse);
+        $reservation = Reservation::find($id_reservation);
         $dompdf = new Dompdf();
-        $html = Template::Bulletin($analyse);
+        $html = Template::templateTicket($reservation);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4');
+        $customPaper = array(0,0,290,380);
+        $dompdf->setPaper($customPaper);
         $dompdf->render();
         $options = $dompdf->getOptions(); 
         $options->set(array('isRemoteEnabled' => true));
@@ -156,28 +157,15 @@ class ReservationController extends Controller
         $reservation->adress = $request['adress'];
         $reservation->matricule = $request['matricule'];
         $reservation->etat = "en cours";
-        /**
-        * lzm nzid tarif psk rah ytbdl donc
-         */
         Storage::makeDirectory('/public/qrcodes', 0775, true);
         $date = date_create();
         $timestamp  = date_timestamp_get($date);
         $qrcode = $timestamp;
-        $url = 'http://demo.bibanfret.com/storage/app/public/file_'.$qrcode.'.pdf';
+        $url = env('APP_URL').'/storage/app/public/file_'.$qrcode.'.pdf';
         \QrCode::generate($url, storage_path().'/app/public/qrcodes/'.$timestamp.'.svg');
-        $url = 'http://demo.bibanfret.com/qrcode/'.$qrcode;
-        $dompdf = new Dompdf();
-        $options = $dompdf->getOptions(); 
-        $options->set(array('isRemoteEnabled' => true));
-        $dompdf->setOptions($options);
-        $html = Template::templateTicket();        
-        $dompdf->loadHtml($html);
-        $customPaper = array(0,0,290,480);
-        $dompdf->setPaper($customPaper);
-        $dompdf->render();
-        $content = $dompdf->output();
-        $file = $dompdf->output();
-        Storage::put('public/file_'.$qrcode.'.pdf', $file);
+
+        $url = env('APP_URL').'/qrcode/'.$qrcode;
+        // Storage::put('public/file_'.$qrcode.'.pdf', $file);
         $reservation->ticket = 'public/file_'.$qrcode.'.pdf';
         $reservation->qrcode = $timestamp;
         $setting = Setting::find(1);

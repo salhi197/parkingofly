@@ -80,7 +80,7 @@ class LoginController extends Controller
          
                 if($finduser){
                     Auth::login($finduser);
-                    return redirect('/home');
+                    return redirect('/dashboard');
         
                 }else{
                     $newUser = User::create([
@@ -91,7 +91,7 @@ class LoginController extends Controller
                     ]);
 
                     Auth::login($newUser);
-                    return redirect('/home');
+                    return redirect('/dashboard');
                 }
         
             } catch (Exception $e) {
@@ -130,7 +130,7 @@ class LoginController extends Controller
     public function showAdminLoginForm()
     {
         return view('auth.login', [
-            'url' => Config::get('constants.guards.admin')
+            'url' => 'admin'
         ]);
     }
 
@@ -206,7 +206,7 @@ class LoginController extends Controller
 
     public function adminLogin(Request $request)
     {
-        if ($this->guardLogin($request, Config::get('constants.guards.admin'))) {
+        if ($this->guardLogin($request, 'admin')) {
             return redirect()->intended('/home');
         }
         return back()->withInput($request->only('email', 'remember'));

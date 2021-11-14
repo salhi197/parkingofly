@@ -75,9 +75,6 @@
                                 <div class="col-lg-12 text-center">
                                     <button type="submit" class="btn btn-block btn-dark">Sign In</button>
                                 </div>
-                                <div class="col-lg-12 text-center">
-                                    <a href="/login/google" class="btn btn-block btn-dark">Google</a>
-                                </div>
 
                             </div>
                         </form>

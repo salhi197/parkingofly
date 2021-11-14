@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<td>
-				@include('beautymail::templates.minty.button', ['text' => 'Télécharger le Ticket', 'link' => 'https://beta.parkingo-fly.com/storage/app/public/file_1635949565.pdf'])
+				@include('beautymail::templates.minty.button', ['text' => 'Télécharger le Ticket', 'link' => env('APP_URL').'/storage/app/'.$data['ticket']])
 			</td>
 		</tr>
 		<tr>

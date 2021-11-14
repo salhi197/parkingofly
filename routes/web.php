@@ -82,6 +82,9 @@ Route::group(['prefix' => 'categorie2', 'as' => 'categorie2'], function () {
     Route::get('/edit/{id_categorie}', ['as' => '.edit', 'uses' => 'Categorie2Controller@edit']);
 });
 Route::get('/', 'HomeController@welcome')->name('welcome');
+
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+
 Route::get('/caisse', 'HomeController@caisse')->name('caisse');
 Route::get('/setting', 'HomeController@setting')->name('setting');
 Route::get('/qrcode/{qrcode}', 'HomeController@qrcodePDF')->name('qrcode.pdf');

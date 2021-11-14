@@ -11,59 +11,98 @@ class Template extends Model
 
     public static function templateTicket() {
         $current = date('Y-m-d');
-
+        $qrcode = asset('img/1636877747.svg');
         $html='
-        <html style="page-break-before: always;">
-        <head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+        <!doctype html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <title>Ticket Template</title>
+        
         <style type="text/css">
-        @page { size: 215pt 215pt;margin:0; }
-        span.cls_008{font-family:"Trebuchet MS",serif;font-size:7.0px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        div.cls_008{font-family:"Trebuchet MS",serif;font-size:7.0px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        span.cls_003{font-family:"Trebuchet MS",serif;font-size:9.1px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        div.cls_003{font-family:"Trebuchet MS",serif;font-size:9.1px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        span.cls_004{font-family:"Trebuchet MS Bold",serif;font-size:10.1px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        div.cls_004{font-family:"Trebuchet MS Bold",serif;font-size:10.1px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        span.cls_002{font-family:"Trebuchet MS Bold",serif;font-size:48.0px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        div.cls_002{font-family:"Trebuchet MS Bold",serif;font-size:48.0px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        span.cls_005{font-family:"Trebuchet MS Bold",serif;font-size:14.1px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        div.cls_005{font-family:"Trebuchet MS Bold",serif;font-size:14.1px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        span.cls_006{font-family:"Trebuchet MS Bold",serif;font-size:9.1px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        div.cls_006{font-family:"Trebuchet MS Bold",serif;font-size:9.1px;color:rgb(24,24,24);font-weight:bold;font-style:normal;text-decoration: none}
-        span.cls_007{font-family:"Trebuchet MS",serif;font-size:8.1px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        div.cls_007{font-family:"Trebuchet MS",serif;font-size:8.1px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        span.cls_009{font-family:"Trebuchet MS",serif;font-size:12.1px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
-        div.cls_009{font-family:"Trebuchet MS",serif;font-size:12.1px;color:rgb(24,24,24);font-weight:normal;font-style:normal;text-decoration: none}
+            * {
+                font-family: Verdana, Arial, sans-serif;
+            }
+            table{
+                font-size: x-small;
+            }
+            tfoot tr td{
+                font-weight: bold;
+                font-size: x-small;
+            }
+        
+            .gray {
+                background-color: lightgray
+            }
         </style>
-        <script type="text/javascript" src="525ab86c-3723-11eb-8b25-0cc47a792c0a_id_525ab86c-3723-11eb-8b25-0cc47a792c0a_files/wz_jsgraphics.js"></script>
+        
         </head>
         <body>
-        <div style="position:absolute;left:50%;margin-left:-141px;top:0px;width:283px;height:283px;overflow:hidden">
-        <div style="position:absolute;left:0px;top:0px">
-        <img src="'.asset("img/background3.jpg").'" width=283 height=283></div>
-        <div style="position:absolute;left:218.88px;top:45.41px" class="cls_008"><span style="font-size:11px;" class="cls_008"></span></div>
-        <div style="position:absolute;left:222.88px;top:65.41px" class="cls_008"><span style="font-size:11px;" class="cls_008">'.$current.'</span></div>
-        <div style="position:absolute;left:44.16px;top:11.65px" class="cls_003"><span class="cls_003">Fournisseur : </span></div>
-        <div style="position:absolute;left:92.16px;top:11.65px" class="cls_003"><span class="cls_003"></span></div>
-        <div style="position:absolute;left:20.76px;top:45.73px" class="cls_003"><span class="cls_003">N° Service Client</span></div>
-        <div style="position:absolute;left:90.32px;top:45.21px" class="cls_004"><span class="cls_004"></span></div>
-        <div style="position:absolute;left:210.24px;top:50.33px" class="cls_002"><span class="cls_002"></span></div>
-        <div style="position:absolute;left:47.04px;top:75.01px" class="cls_003"><span class="cls_003">Nom: </span></div>
-        <div style="position:absolute;left:220.24px;top:79.77px; class="cls_006"><span style="font-size:40px;" class="cls_006"></span></div>
-        <div style="position:absolute;left:148.80px;top:85.57px" class="cls_003"><span class="cls_003">Fragile</span></div>
-        <div style="position:absolute;left:47.04px;top:96.13px" class="cls_003"><span class="cls_003"></span></div>
-        <div style="position:absolute;left:17.28px;top:120.65px" class="cls_007"><span class="cls_007">Produit</span></div>
-        <div style="position:absolute;left:125.44px;top:120.65px" class="cls_007"><span class="cls_007">Qtn</span></div>
-        <div style="position:absolute;left:150.44px;top:120.65px" class="cls_007"><span class="cls_007">prix</span></div>
+        
+          <table width="100%">
+            <tr>
+                <td valign="top"></td>
+                <td align="center">
+                    <h3>Parking Go Fly Hani</h3>
+                    <h3>Ticket de Réservation </h3>
+
+                </td>
+            </tr>
+        
+          </table>
+        
+          <table width="100%">
+            <tr align="center">
+                <td>Salhi Haider Ali</td>
+            </tr>
+        
+          </table>
+
+          <table width="100%">
+          <tr>
+              <td>Date et Heure D\'entrée : </td>
+              <td> Linblum - Barrio </td>
+          </tr>
+
+          <tr>
+              <td>Date et Heure de Sortie : </td>
+              <td> Linblum - Barrio Comercial</td>
+          </tr>
+          <tr>
+              <td>Téléphone : </td>
+              <td> Linblum - Barrio </td>
+          </tr>
+          <tr>
+              <td>Email : </td>
+              <td> Linblum - Barrio Comercial</td>
+          </tr>
+          <tr>
+              <td>Linblum - Barrio teatral</td>
+              <td> Linblum - Barrio Comercial</td>
+          </tr>
+          <tr>
+              <td>Linblum - Barrio teatral</td>
+              <td> Linblum - Barrio Comercial</td>
+          </tr>
+
+
+          <tr>
+              <td align="center">
+                <img src="'.$qrcode.'" />
+              </td>
+          </tr>
+          
+        </table>
+
+
+          <br/>
+        
+
+        </body>
+        </html>        
         ';
                 
-        $html=$html.'<div style="position:absolute;left:220.24px;top:153.29px" class="cls_007"><span class="cls_007"></span></div>
-        <div style="position:absolute;left:54.72px;top:200.17px" class="cls_009"><span class="cls_009">Total</span></div>
-        <div style="position:absolute;left:96.96px;top:200.17px" class="cls_009"><span class="cls_009">Da</span></div>
-        <div style="position:absolute;left:49.92px;top:224.29px" class="cls_003"><span class="cls_003">++++++++++++++++++++++++</span></div>
-        <div style="position:absolute;left:50.88px;top:241.57px" class="cls_006"><span class="cls_006">Aucun Article a Recuperer</span></div>
-        </div>    
-        ';
-            return $html;
+        return $html;
 
     }
 

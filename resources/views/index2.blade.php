@@ -90,29 +90,38 @@
 
         <section class="form-container" data-aos="zoom-in">
 
-            <form action="">
-
+            <form action="{{route('reservation.search')}}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="inputBox">
                     <i class="fas fa-hotel"></i>
-                    <span>Hotel</span>
-                    <input type="text" placeholder="choisir l'Hotel">
+
+                    <select class="inputBox">
+                        <option value="1">
+                            Hyatt Regency
+                        </option>
+                        @foreach($hotels as $hotel)
+                            <option value="1">
+                                {{$hotel->nom  ?? ''}}
+                            </option>
+                        @endforeach
+                    </select>                                 
                 </div>
 
                 <div class="inputBox">
                     <span>Début</span>
-                    <input type="date">
+                    <input type="date" name="debut">
                 </div>
                 <div class="inputBox1">
                     <span>Heure</span>
-                    <input type="time">
+                    <input type="time" name="debut_heure">
                 </div>
                 <div class="inputBox">
                     <span>Fin</span>
-                    <input type="date">
+                    <input name="fin" type="date">
                 </div>
                 <div class="inputBox1">
                     <span>Heure</span>
-                    <input type="time">
+                    <input type="time" name="fin_heure">
                 </div>
 
                 <input type="submit" value="GO" class="btn">
@@ -395,7 +404,7 @@
 
             <h1 class="heading"> <span>contactez</span> nous </h1>
 
-            <form action="" data-aos="zoom">
+            <form  name="formo" id="formo" class="form-horizontal" data-aos="zoom">
 
                 <div class="inputBox">
                     <input type="text" placeholder="nom" data-aos="fade-up">

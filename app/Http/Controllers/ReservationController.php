@@ -94,20 +94,19 @@ class ReservationController extends Controller
         //         ($debut=>debut and $fin<=fin)
         //     );
         //     ");
+        $occupied=[];
         $reservations = Reservation::all();
         foreach($reservations as $reservation){
             $d = $reservation->debut;
             $f = $reservation->fin;
-            $occupied=[];
-            if( ($d>=$debut && $d<=$fin) ||
-                ($debut<=$d && $fin>=$f)||
-                ($debut<=$f && $fin>=$f)||
-                ($debut>=$d && $fin<=$f)){
-                $places[]= $reservation->place;
+            if( ($d>=$debut && $d<=$fin) || ($debut<=$d && $fin>=$f)|| ($debut<=$f && $fin>=$f)|| ($debut>=$d && $fin<=$f)){
+                $occupied[]= $reservation->place;
             }
         }
         $places = Place::all()->pluck('id')->toArray();
         $result = array_diff($places, $occupied);
+        $index = array_keys($result)[0];
+        $place = Place::find($places[$index]);
         $debut = Carbon::parse($debut);
         $fin = Carbon::parse($fin);
         $diff = $debut->diffInDays($fin);
@@ -118,7 +117,7 @@ class ReservationController extends Controller
         $debut_heure = $request['debut_heure'];
         $fin_heure = $request['fin_heure'];
 
-        return view('reservations.create', compact(
+        return view('reservations.create2', compact(
             'places',
             "debut",
             'debut_heure',

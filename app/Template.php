@@ -11,7 +11,7 @@ class Template extends Model
 
     public static function templateTicket() {
         $current = date('Y-m-d');
-        $qrcode = asset('img/1636877747.svg');
+        $qrcode = asset('/img/1636877747.svg');
         $html='
         <!doctype html>
         <html lang="en">
@@ -84,14 +84,14 @@ class Template extends Model
               <td>Linblum - Barrio teatral</td>
               <td> Linblum - Barrio Comercial</td>
           </tr>
-
-
-          <tr>
+          <tr width="100%;backgroud:red;">
               <td align="center">
-                <img src="'.$qrcode.'" />
+                <h3>
+                    Merci Pour Votre Confiance 
+                </h3>
               </td>
           </tr>
-          
+
         </table>
 
 

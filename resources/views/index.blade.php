@@ -96,11 +96,11 @@
                               </div>
                               <div class="persent-one less-per">
                                  <i class="fa fa-calendar-minus-o" aria-hidden="true"></i>
-                                 <input type="date" name="debut" class="textboxstyle" id="from-date1" placeholder="Début">
+                                 <input type="date" name="debut" class="textboxstyle" id="from-date1" placeholder="Début" min="{{date('Y-m-d')}}">
                               </div>
                               <div class="persent-one less-per">
                                  <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                 <input type="time" name="dep" class="textboxstyle" id="from-date1" placeholder="Heure">
+                                 <input type="time" name="dep" class="textboxstyle" id="from-date1"  placeholder="Heure">
                               </div>
                               <div class="persent-one less-per">
                                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>

@@ -109,10 +109,10 @@
 
                 <div class="inputBox">
                     <span>Début</span>
-                    <input type="date" name="debut">
+                    <input type="date" name="debut" min="{{date('Y-m-d')}}"> 
                 </div>
                 <div class="inputBox1">
-                    <span>Heure</span>
+                    <span>Heure</span>  
                     <input type="time" name="debut_heure">
                 </div>
                 <div class="inputBox">

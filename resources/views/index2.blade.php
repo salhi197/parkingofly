@@ -16,7 +16,7 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- custom css file cdn link  -->
-        <link rel="stylesheet" href="{{asset('front2/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
 
     </head>
     <body>
@@ -57,8 +57,10 @@
                     <input type="checkbox" name="" id="login-remember">
                     <label for="login-remember">remember me</label>
                 </div>
-
+                <i class="fab fa-google-plus"></i>
+                <i class="fab fa-facebook"></i>
                 <input type="submit" class="btn" value="Se connecter">
+
 
             </form>
 
@@ -69,116 +71,90 @@
         <!-- home section starts  -->
 
         <section class="home" id="home">
-            <!--
-            <div class="image" data-aos="fade-down">
-                <img src="images/home-img.svg" alt="">
+            <div class="content">
+                <h2>Réservez votre place de parking</h2>
+                <p>
+                    Comparez et réservez les meilleures offres parmi tous les
+                    parkings Faites jusqu'à 60% d'économie.
+                </p>
             </div>
--->
-            <div class="content" data-aos="fade-up">
-                <h3>adventure is worthwhile</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Veritatis explicabo eius inventore reprehenderit alias eos
-                    facilis, ipsa est asperiores repellendus!</p>
-                <a href="#" class="btn">rani ndevoloper fiha</a>
-            </div>
+            <div class="form-container" data-aos="zoom-in">
+                <br><br><br><br><br><br><br><br><br>
 
+                <form action="{{route('reservation.search')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="inputBox">
+                        <span>Parking</span>
+                        <input type="text" placeholder="choisir l'Hotel">
+                    </div>
+
+                    <div class="inputBox">
+                        <span>Début</span>
+                        <input type="date" name="debut" min="{{date('Y-m-d')}}">
+                    </div>
+                    <div class="inputBox1">
+                        <span>Heure</span>
+                        <input type="time">
+                    </div>
+                    <div class="inputBox">
+                        <span>Fin</span>
+                        <input name="fin" type="date">
+                    </div>
+                    <div class="inputBox1">
+                        <span>Heure</span>
+                        <input type="time">
+                    </div>
+
+                    <input type="submit" value="GO" class="btn">
+
+                </form>
+
+            </div>
         </section>
 
-        <!-- home section ends -->
-
-        <!-- filter form section starts  -->
-
-        <section class="form-container" data-aos="zoom-in">
-
-            <form action="{{route('reservation.search')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="inputBox">
-                    <i class="fas fa-hotel"></i>
-
-                    <select class="inputBox">
-                        <option value="1">
-                            Hyatt Regency
-                        </option>
-                        @foreach($hotels as $hotel)
-                            <option value="1">
-                                {{$hotel->nom  ?? ''}}
-                            </option>
-                        @endforeach
-                    </select>                                 
-                </div>
-
-                <div class="inputBox">
-                    <span>Début</span>
-                    <input type="date" name="debut" min="{{date('Y-m-d')}}"> 
-                </div>
-                <div class="inputBox1">
-                    <span>Heure</span>  
-                    <input type="time" name="debut_heure">
-                </div>
-                <div class="inputBox">
-                    <span>Fin</span>
-                    <input name="fin" type="date">
-                </div>
-                <div class="inputBox1">
-                    <span>Heure</span>
-                    <input type="time" name="fin_heure">
-                </div>
-
-                <input type="submit" value="GO" class="btn">
-
-            </form>
-
-        </section>
-
-        <!-- filter form section ends -->
-
-        <!-- packages section starts  -->
+       
 
         <section class="packages" id="packages">
 
-            <h1 class="heading"> Nos <span>Hotels</span> </h1>
-
-            <div class="box-container">
-
-                <div class="box" data-aos="fade-up">
-                    <div class="image">
-                        <img src="{{asset('front2/images/h1.jpg')}}" alt="">
-                        <h3> <i class="fas fa-map-marker-alt"></i> Aéroport
-                        </h3>
+            <h1 class="heading"> Nos <span>Parkings</span> </h1>
+            <form action="{{route('reservation.search')}}" method="post">
+                <div class="box-container">
+                    <div class="box" data-aos="fade-up">
+                        <div class="image">
+                            <img src="{{asset('front2/images/h1.jpg')}}" alt="">
+                            <h3> <i class="fas fa-map-marker-alt"></i> Aéroport
+                            </h3>
+                        </div>
+                        <div class="content">
+                            <div class="price"> Hyatt Regency</div>
+                            <a href="#" class="btn"> Réserver ici</a>
+                        </div>
                     </div>
-                    <div class="content">
-                        <div class="price"> Hyatt Regency</div>
-                        <a href="#" class="btn"> Réserver ici</a>
+
+                    <div class="box" data-aos="fade-up">
+                        <div class="image">
+                            <img src="{{asset('front2/images/h3.jpg')}}" alt="">
+                            <h3> <i class="fas fa-map-marker-alt"></i> Bab Ezzouar</h3>
+                        </div>
+                        <div class="content">
+                            <div class="price"> Hotel Mercure </div>
+                            <a href="#" class="btn"> Réserver ici</a>
+                        </div>
+                    </div>
+
+                    <div class="box" data-aos="fade-up">
+                        <div class="image">
+                            <img src="{{asset('front2/images/h2.jpg')}}" alt="">
+                            <h3> <i class="fas fa-map-marker-alt"></i> Bab Ezzouar
+                            </h3>
+                        </div>
+                        <div class="content">
+                            <div class="price"> Hotel Ibis </div>
+                            <a href="#" class="btn"> Réserver ici</a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="box" data-aos="fade-up">
-                    <div class="image">
-                        <img src="{{asset('front2/images/h3.jpg')}}" alt="">
-                        <h3> <i class="fas fa-map-marker-alt"></i>Bab Ezzouar</h3>
-                    </div>
-                    <div class="content">
-                        <div class="price"> Hotel Mercure </div>
-                        <a href="#" class="btn"> Réserver ici</a>
-                    </div>
-                </div>
-
-                <div class="box" data-aos="fade-up">
-                    <div class="image">
-                        <img src="{{asset('front2/images/h2.jpg')}}" alt="">
-                        <h3> <i class="fas fa-map-marker-alt"></i> Bab Ezzouar
-                        </h3>
-                    </div>
-                    <div class="content">
-                        <div class="price"> Hotel Ibis </div>
-                        <a href="#" class="btn"> Réserver ici</a>
-                    </div>
-                </div>
-
-
-
-            </div>
-
+            </form>
         </section>
 
         <!-- packages section ends -->
@@ -243,168 +219,12 @@
 
         </section>
 
-        <!-- services section ends -->
-
-        <!-- pricing section starts  -->
-        <!--
-        <section class="pricing" id="pricing">
-
-            <h1 class="heading"> our <span>pricing</span> </h1>
-
-            <div class="box-container">
-
-                <div class="box" data-aos="zoom-in-up">
-                    <h3> basic plan </h3>
-                    <div class="price">
-                        <span>$</span>
-                        <span class="amount">30</span>
-                        <span>/mo</span>
-                    </div>
-                    <ul>
-                        <li>10 days</li>
-                        <li>food and drinks</li>
-                        <li>safty guide</li>
-                        <li>insurance</li>
-                        <li>luxury hotel</li>
-                    </ul>
-                    <a href="#" class="btn">choose plan</a>
-                </div>
-
-                <div class="box" data-aos="zoom-in-up">
-                    <h3> standard plan </h3>
-                    <div class="price">
-                        <span>$</span>
-                        <span class="amount">50</span>
-                        <span>/mo</span>
-                    </div>
-                    <ul>
-                        <li>20 days</li>
-                        <li>food and drinks</li>
-                        <li>safty guide</li>
-                        <li>insurance</li>
-                        <li>luxury hotel</li>
-                    </ul>
-                    <a href="#" class="btn">choose plan</a>
-                </div>
-
-                <div class="box" data-aos="zoom-in-up">
-                    <h3> premium plan </h3>
-                    <div class="price">
-                        <span>$</span>
-                        <span class="amount">90</span>
-                        <span>/mo</span>
-                    </div>
-                    <ul>
-                        <li>30 days</li>
-                        <li>food and drinks</li>
-                        <li>safty guide</li>
-                        <li>insurance</li>
-                        <li>luxury hotel</li>
-                    </ul>
-                    <a href="#" class="btn">choose plan</a>
-                </div>
-
-            </div>
-
-        </section>
--->
-        <!-- pricing section ends -->
-
-        <!-- review section starts  -->
-        <!--
-        <section class="review" id="review">
-
-            <h1 class="heading"> client's <span>review</span> </h1>
-
-            <div class="swiper-container review-slider" data-aos="zoom-in">
-
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide slide">
-                        <img src="images/pic-1.png" alt="">
-                        <h3>john deo</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Pariatur sunt eligendi est, dicta maiores amet
-                            nihil perferendis, incidunt maxime aspernatur
-                            exercitationem laboriosam odio dolores magnam
-                            ratione atque, quasi odit. Hic!</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide slide">
-                        <img src="images/pic-2.png" alt="">
-                        <h3>john deo</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Pariatur sunt eligendi est, dicta maiores amet
-                            nihil perferendis, incidunt maxime aspernatur
-                            exercitationem laboriosam odio dolores magnam
-                            ratione atque, quasi odit. Hic!</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide slide">
-                        <img src="images/pic-3.png" alt="">
-                        <h3>john deo</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Pariatur sunt eligendi est, dicta maiores amet
-                            nihil perferendis, incidunt maxime aspernatur
-                            exercitationem laboriosam odio dolores magnam
-                            ratione atque, quasi odit. Hic!</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide slide">
-                        <img src="images/pic-4.png" alt="">
-                        <h3>john deo</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Pariatur sunt eligendi est, dicta maiores amet
-                            nihil perferendis, incidunt maxime aspernatur
-                            exercitationem laboriosam odio dolores magnam
-                            ratione atque, quasi odit. Hic!</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="swiper-pagination"></div>
-
-            </div>
-
-        </section>
--->
-        <!-- review section ends -->
-
-        <!-- contact section starts  -->
 
         <section class="contact" id="contact">
 
             <h1 class="heading"> <span>contactez</span> nous </h1>
 
-            <form  name="formo" id="formo" class="form-horizontal" data-aos="zoom">
+            <form action="" data-aos="zoom">
 
                 <div class="inputBox">
                     <input type="text" placeholder="nom" data-aos="fade-up">
@@ -438,7 +258,7 @@
 
                 <div class="box" data-aos="fade-up">
                     <div class="image">
-                        <img src="images/blog-1.svg" alt="">
+                        <img src="{{asset('front2/images/blog-1')}}.svg" alt="">
                     </div>
                     <div class="content">
                         <h3>explore the world now, adventure awaits</h3>
@@ -454,7 +274,7 @@
 
                 <div class="box" data-aos="fade-up">
                     <div class="image">
-                        <img src="images/blog-2.svg" alt="">
+                        <img src="{{asset('front2/images/blog-2')}}.svg" alt="">
                     </div>
                     <div class="content">
                         <h3>explore the world now, adventure awaits</h3>
@@ -470,7 +290,7 @@
 
                 <div class="box" data-aos="fade-up">
                     <div class="image">
-                        <img src="images/blog-3.svg" alt="">
+                        <img src="{{asset('front2/images/blog-3')}}.svg" alt="">
                     </div>
                     <div class="content">
                         <h3>explore the world now, adventure awaits</h3>
@@ -555,40 +375,16 @@
 
         <!-- footer section ends -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <!-- custom js file link  -->
-        <script src="{{asset('front2/js/script.js')}}"></script>
+        <script src="js/script.js"></script>
 
-        <script>
-
-AOS.init({
-    duration:800,
-    delay:400
-});
-
+<script>
+    AOS.init({
+        duration:800,
+        delay:400
+    });
 </script>
     </body>
 </html>

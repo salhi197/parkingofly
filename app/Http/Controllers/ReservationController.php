@@ -14,7 +14,6 @@ use App\Fournisseur;
 use App\Setting;
 use App\Payment;
 use Illuminate\Http\Request;
-use setasign\Fpdi\Fpdi;
 use Alert;
 
 class ReservationController extends Controller
@@ -145,25 +144,8 @@ class ReservationController extends Controller
 
     public function ticket($id_reservation)
     {
-        // $pdf = new Fpdi('L','mm',array(120,70.6));
-        // $pdf->AddPage();
-        // $pdf->setSourceFile("demo.pdf");
-        // $tplId = $pdf->importPage(1);
-        // // use the imported page and place it at point 10,10 with a width of 100 mm
-        // $pdf->useTemplate($tplId);
-        // // The new content
-        // $fontSize = '15';
-        // $fontColor = `255,0,0`;
-        // $left = 16;
-        // $top = 40;
-        // $text = 'Sample Text over overlay';
-        // //set the font, colour and text to the page.
-        // $pdf->SetFont("helvetica", "B", 15);
-        // $pdf->SetTextColor($fontColor);
-        // $pdf->Text($left,$top,$text);
-        // //see the results
-        // $pdf->Output();          
-        // dd('sa');
+        Template::ticket();
+        dd('sa');
         $reservation = Reservation::find($id_reservation);
         $dompdf = new Dompdf();
         $html = Template::templateTicket($reservation);

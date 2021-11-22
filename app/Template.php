@@ -4,10 +4,32 @@ namespace App;
 
 use App\Http\Controllers\ReservationController;
 use App\Produit;
+use setasign\Fpdi\Fpdi;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Template extends Model
 {
+    public static function ticket() {
+
+        $pdf = new Fpdi('P','in',[3, 5]);
+        
+        $pdf->AddPage();
+        $pdf->setSourceFile("bon.pdf");
+        $tplId = $pdf->importPage(1);
+        $pdf->useTemplate($tplId);
+        $fontColor = `255,0,0`;
+        $left = 0.5;
+        $top = 1.7;
+        $text = 'Sample ';
+        //set the font, colour and text to the page.
+        $pdf->SetFont("helvetica", "B", 9);
+        $pdf->SetTextColor($fontColor);
+        $pdf->Text($left,$top,$text);
+        //see the results
+        $pdf->Output();          
+        
+    }
 
     public static function templateTicket() {
         $current = date('Y-m-d');

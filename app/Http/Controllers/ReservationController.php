@@ -222,10 +222,14 @@ class ReservationController extends Controller
         $logo = [
             'path' => ''
         ];
-        Mail::send('email', ['data' => $data, 'css' => '', 'logo' => $logo, 'unsubscribe' => ''], function ($message) use ($data) {
-            $message->to($data['email'])
-                ->subject('Ticket de reservation');
-        });
+        try {
+            Mail::send('email', ['data' => $data, 'css' => '', 'logo' => $logo, 'unsubscribe' => ''], function ($message) use ($data) {
+                $message->to($data['email'])
+                    ->subject('Ticket de reservation');
+            });
+        } catch (\Throwable $th) {
+            return redirect()->route('welcome')->with('error', 'Error While Sending Mail ');
+        }
         return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
     }
 

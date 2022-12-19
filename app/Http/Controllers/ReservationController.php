@@ -148,7 +148,7 @@ class ReservationController extends Controller
         return view('reservations.create');
     }
 
-    public function templateTicket($id_reservation)
+    public function ticket($id_reservation)
     {
         Template::ticket();
         dd('sa');

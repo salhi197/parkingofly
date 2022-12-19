@@ -206,32 +206,31 @@
                     <span>01</span>
                     <i class="fas fa-hotel"></i>
                     <h3>Parking sous surveillence</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Officia, rem.</p>
+                    <p>LE PARKING EST SECURISEE 24/24H ET COUVERT AVEC UN PASSAGE PIETON PRIVEE.</p>
                 </div>
 
                 <div class="box" data-aos="zoom-in">
                     <span>02</span>
                     <i class="fas fa-plane"></i>
-                    <h3>Stationnement disponible 24/7</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Officia, rem.</p>
+                    <h3>A coté de l'aéroport</h3>
+                    <p>Des navettes qui transmit le voyageur de l’hotel à l’aéroport gratuitement.</p>
                 </div>
 
                 <div class="box" data-aos="zoom-in">
                     <span>03</span>
                     <i class="fas fa-utensils"></i>
-                    <h3>food and drinks</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Officia, rem.</p>
+                    <h3>Tarifs moins chers</h3>
+                    <p>
+                        Notre politique de vente à 50% et 60 % moins cher de prix du marché .
+                    </p>
                 </div>
 
                 <div class="box" data-aos="zoom-in">
-                    <span>04</span>
                     <i class="fas fa-globe"></i>
-                    <h3>around the world</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Officia, rem.</p>
+                    <h3>
+                        Stationnement 24h/7
+                    </h3>
+                    <p>Places disponibles à tous moment.</p>
                 </div>
 
                 <!-- <div class="box" data-aos="zoom-in">

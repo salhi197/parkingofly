@@ -19,7 +19,7 @@ class PlaceController extends Controller
     public function index()
     {
         $places = Place::all();
-        $hotesl = Admin::all();
+        $hotels = Admin::all();
         
         return view('places.index',compact('places','hotels'));
     }

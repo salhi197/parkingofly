@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
-@section('page_wrapper')
-@endsection
+
 
 @section('content')
 

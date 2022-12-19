@@ -112,6 +112,14 @@
             @csrf
                 <div class="form-group">
                     <label class="small mb-1" for="inputFirstName">Label: </label>
+                    <select>    
+                        @foreach($hotels as $hotel)
+                        <option value="{{$hotel->id}}">{{$hotel->nom ?? ''}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="small mb-1" for="inputFirstName">Label: </label>
                     <input type="text" name="label"  class="form-control"/>
                 </div>    
 

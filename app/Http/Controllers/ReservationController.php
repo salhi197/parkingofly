@@ -193,7 +193,9 @@ class ReservationController extends Controller
         $reservation->qrcode = $timestamp;
         $setting = Setting::find(1);
         $tarif = $setting['value'];
+
         $reservation->tarif = $tarif;
+
         $reservation->debut = $request['debut'];
         $reservation->fin = $request['fin'];
         $reservation->debut_heure = $request['debut_heure'];
@@ -204,9 +206,9 @@ class ReservationController extends Controller
             return redirect()->back()->with('error', 'Error ');
         }
 
-        // Alert::success('C\'est Fait', 'Votre Réservation a été efféctué ');
+        Alert::success('C\'est Fait', 'Votre Réservation a été efféctué ');
 
-        return redirect()->route('reservation.ticket',['reservation'=>$reservation->id])->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
+        return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
     }
 
 

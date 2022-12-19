@@ -206,7 +206,7 @@ class ReservationController extends Controller
 
         // Alert::success('C\'est Fait', 'Votre Réservation a été efféctué ');
 
-        return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
+        return redirect()->route('reservation.ticket',['reservation'=>$reservation->id])->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
     }
 
 

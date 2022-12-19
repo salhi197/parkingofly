@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Fournisseur;
 use App\Commune;
 use App\Categorie;
@@ -18,7 +19,9 @@ class PlaceController extends Controller
     public function index()
     {
         $places = Place::all();
-        return view('places.index',compact('places'));
+        $hotesl = Admin::all();
+        
+        return view('places.index',compact('places','hotels'));
     }
 
     public function store(Request $request)

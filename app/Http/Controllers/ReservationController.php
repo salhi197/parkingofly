@@ -148,7 +148,7 @@ class ReservationController extends Controller
         return view('reservations.create');
     }
 
-    public function ticket($id_reservation)
+    public function templateTicket($id_reservation)
     {
         Template::ticket();
         dd('sa');
@@ -193,9 +193,7 @@ class ReservationController extends Controller
         $reservation->qrcode = $timestamp;
         $setting = Setting::find(1);
         $tarif = $setting['value'];
-
         $reservation->tarif = $tarif;
-
         $reservation->debut = $request['debut'];
         $reservation->fin = $request['fin'];
         $reservation->debut_heure = $request['debut_heure'];

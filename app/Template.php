@@ -21,7 +21,7 @@ class Template extends Model
         $fontColor = `255,0,0`;
         $left = 0.5;
         $top = 1.7;
-        $text = 'Sample ';
+        $text = 'Marriot';
         //set the font, colour and text to the page.
         $pdf->SetFont("helvetica", "B", 9);
         $pdf->SetTextColor($fontColor);

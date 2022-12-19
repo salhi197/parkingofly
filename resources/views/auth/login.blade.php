@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('mart/assets/images/favicon.png')}}">
-    <title>LaBo</title>
+    <title>Parkingo Fly</title>
     <!-- Custom CSS -->
     <link href="{{asset('mart/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

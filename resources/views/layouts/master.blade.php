@@ -20,7 +20,7 @@
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/toastr.css')}}" rel="stylesheet" />
     <link href="{{asset('css/dataTables.bootstrap4.css')}}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
+    <link rel="stylesheet" href="{{asset('css/toastr.css')}}" />
 
     @yield('styles')
     

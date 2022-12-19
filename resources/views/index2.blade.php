@@ -444,7 +444,7 @@ $(window).on("load",function(){
             @endif
             
                 // toastr.success('{{Session::get("success")}}')
-            toastr.success('reservation inséré avec succés , L&#039;administration Va vous contacter ')
+            // toastr.success('reservation inséré avec succés , L&#039;administration Va vous contacter ')
             
 
         </script>

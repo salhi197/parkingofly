@@ -208,7 +208,7 @@ class ReservationController extends Controller
 
         Alert::success('C\'est Fait', 'Votre réservation en cours de confirmation' );
 
-        $reservation = Reservation::find($reservation_id);
+        $reservation = Reservation::find($reservation->id);
 
         $data = [
             'subject' => 'Ticket de Reservation',

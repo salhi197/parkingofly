@@ -198,7 +198,7 @@
                                                                                 
                                                                         <div class="row">
                                                                             <div class="col-md-12"> 
-                                                                                <img src="/storage/app/public/qrcodes/1636877747.svg" alt="teste" class="img-thumbnail">  
+                                                                                <!-- <img src="/storage/app/public/qrcodes/1636877747.svg" alt="teste" class="img-thumbnail">   -->
                                                                             </div>                                                                        
                                                                         </div>
                                                                     </div>

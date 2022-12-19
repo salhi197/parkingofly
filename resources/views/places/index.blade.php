@@ -22,6 +22,8 @@
                                                 <tr>
                                                     <th>ID place</th>
                                                     <th>Numéro</th>
+                                                    <th>Etat</th>
+                                                    
                                                     <th>actions</th>
                                                 </tr>
                                         </thead>
@@ -30,7 +32,14 @@
                                         <tr>
                                             <td>{{$place->id ?? ''}}</td>
                                             <td>{{$place->numero ?? 'saz'}}</td>
-                                            <td >
+                                            <td>
+                                                @if($place->disponible == 1)
+                                                Disponible
+                                                @else
+                                                Non Disponible
+                                                @endif
+                                            </td>
+                                            <td>
                                                 <div class="table-action">  
                                                     <a  href="{{route('place.destroy',['place'=>$place->id])}}"
                                                         onclick="return confirm('etes vous sure  ?')"

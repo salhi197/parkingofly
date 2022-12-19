@@ -244,7 +244,12 @@
 
 
 @section('scripts')
+<script src="{{asset('front2/js/jquery.min.js')}}"></script>
+
+<script src="{{asset('js/toastr.min.js')}}"></script>	
+
 <script>
+
 $(document).ready(function() {
     var settings  = {!! json_encode($settings->toArray()) !!};
     console.log(settings);
@@ -312,8 +317,33 @@ $(document).ready(function() {
 
 
 });
-
 </script>
+
+
+        <script>
+            $(window).on("load",function(){
+                $("#global-loader").fadeOut("slow");
+            })
+
+
+            @if(session('error'))
+                $(function(){
+                    toastr.error('{{Session::get("error")}}')
+                })
+            @endif
+
+            @if(session('success'))
+                toastr.success('{{Session::get("success")}}')
+            @endif
+            
+                // toastr.success('{{Session::get("success")}}')
+            toastr.success('reservation inséré avec succés , L&#039;administration Va vous contacter ')
+            
+
+        </script>
+
+
+
 @endsection
 
 

@@ -16,16 +16,47 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- custom css file cdn link  -->
+        <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
+
         <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
+        <style>
+
+        #global-loader {
+            position: fixed;
+            z-index: 50000;
+            background: #fff;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .loader-img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            top: 45%;
+            margin: 0 auto;
+        }
+
+        </style>
 
     </head>
     <body>
+    <div id="global-loader">
+			<img src="{{asset('img/logoofficiel.png')}}" class="loader-img" width="150px" alt="Loader">
+		</div>
 
         <!-- header section starts  -->
 
         <header class="header">
 
-            <a href="#" class="logo"> <img class="logo2" src="{{asset('front2/images/logo.png')}}"></a>
+            <a href="#" class="logo"> <img class="logo2" src="{{asset('img/logoofficiel.png')}}"></a>
             <div class="icons">
                 <div class="fas fa-search" id="search-btn"></div>
                 <div class="fas fa-moon" id="theme-btn"></div>
@@ -85,7 +116,11 @@
                     @csrf
                     <div class="inputBox">
                         <span>Parking</span>
-                        <input type="text" placeholder="choisir l'Hotel">
+                        <select class="form-control">
+                            @foreach($hotels as $hotel)
+                                <option value="{{$hotel->id}}">{{$hotel->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="inputBox">
@@ -94,7 +129,7 @@
                     </div>
                     <div class="inputBox1">
                         <span>Heure</span>
-                        <input type="time">
+                        <input type="time" name="heure_debut">
                     </div>
                     <div class="inputBox">
                         <span>Fin</span>
@@ -102,7 +137,7 @@
                     </div>
                     <div class="inputBox1">
                         <span>Heure</span>
-                        <input type="time">
+                        <input type="time" name="heure_fin">
                     </div>
 
                     <input type="submit" value="GO" class="btn">
@@ -144,12 +179,12 @@
 
                     <div class="box" data-aos="fade-up">
                         <div class="image">
-                            <img src="{{asset('front2/images/h2.jpg')}}" alt="">
+                            <img src="{{asset('front2/images/h4.jpg')}}" alt="">
                             <h3> <i class="fas fa-map-marker-alt"></i> Bab Ezzouar
                             </h3>
                         </div>
                         <div class="content">
-                            <div class="price"> Hotel Ibis </div>
+                            <div class="price"> Hotel Maryott </div>
                             <a href="#" class="btn"> Réserver ici</a>
                         </div>
                     </div>
@@ -170,7 +205,7 @@
                 <div class="box" data-aos="zoom-in">
                     <span>01</span>
                     <i class="fas fa-hotel"></i>
-                    <h3>affordable hotels</h3>
+                    <h3>Parking sous surveillence</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Officia, rem.</p>
                 </div>
@@ -199,21 +234,21 @@
                         Officia, rem.</p>
                 </div>
 
-                <div class="box" data-aos="zoom-in">
+                <!-- <div class="box" data-aos="zoom-in">
                     <span>05</span>
                     <i class="fas fa-hiking"></i>
                     <h3>new adventures</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Officia, rem.</p>
-                </div>
+                </div> -->
 
-                <div class="box" data-aos="zoom-in">
+                <!-- <div class="box" data-aos="zoom-in">
                     <span>01</span>
                     <i class="fas fa-bullhorn"></i>
                     <h3>safety guide</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Officia, rem.</p>
-                </div>
+                </div> -->
 
             </div>
 
@@ -308,8 +343,7 @@
 
         </section>
 
-        <!-- blog section ends -->
-        -->
+        blog section ends -->
         <!-- footer section starts  -->
 
         <section class="footer">
@@ -377,14 +411,46 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="{{asset('front2/js/jquery.min.js')}}"></script>
+
+        <script src="{{asset('js/toastr.min.js')}}"></script>	
+
         <!-- custom js file link  -->
-        <script src="js/script.js"></script>
+        <!-- <script src="{{asset('js/scripts.js')}}"></script> -->
 
 <script>
     AOS.init({
         duration:800,
         delay:400
+        
     });
+
 </script>
+
+        <script>
+$(window).on("load",function(){
+  $("#global-loader").fadeOut("slow");
+})
+
+
+            @if(session('error'))
+                $(function(){
+                    toastr.error('{{Session::get("error")}}')
+                })
+            @endif
+
+            @if(session('success'))
+                toastr.success('{{Session::get("success")}}')
+            @endif
+            
+                // toastr.success('{{Session::get("success")}}')
+            toastr.success('reservation inséré avec succés , L&#039;administration Va vous contacter ')
+            
+
+        </script>
+
+
+
+
     </body>
 </html>

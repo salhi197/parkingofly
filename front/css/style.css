@@ -249,7 +249,7 @@ section{
 
 .home{
     min-height: 70vh;
-    background: linear-gradient(rgba(0,0,0,.1), rgba(21, 161, 213, 0.754)), url(/images/parking.jpg) no-repeat;
+    background: linear-gradient(rgba(0,0,0,.1), rgba(21, 161, 213, 0.754)), url(/parkingofly/img/background.jpg) no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

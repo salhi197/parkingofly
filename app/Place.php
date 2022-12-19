@@ -15,4 +15,10 @@ class Place extends Model
         'description',
         'disponible'        
     ];
+
+    public function hotel()
+    {
+        $hotel = Admin::find($this->hotel);
+        return $hotel;
+    }
 }

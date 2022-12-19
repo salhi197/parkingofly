@@ -21,7 +21,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item"> 
-                            <a class="sidebar-link" href="/hotel" aria-expanded="false">
+                            <a class="sidebar-link" href="{{route('hotel.index')}}" aria-expanded="false">
                             <i class="fas fa-users"></i>
                                 <span class="hide-menu">Hotels</span>
                             </a>
@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item"> 
-                            <a class="sidebar-link" href="/place " aria-expanded="false">
+                            <a class="sidebar-link" href="{{route('place.index')}} " aria-expanded="false">
                             <i class="fas fa-list"></i>
                                 <span class="hide-menu">Les Places</span>
                             </a>
@@ -42,7 +42,7 @@
 
 
                         <li class="sidebar-item"> 
-                            <a class="sidebar-link" href="/setting" aria-expanded="false">
+                            <a class="sidebar-link" href="{{route('setting')}}" aria-expanded="false">
                             <i class="fas fa-cog"></i>
                                 <span class="hide-menu">Paramètres</span>
                             </a>

@@ -71,7 +71,7 @@ class ReservationController extends Controller
         $reservations = $result->get();
         return view('reservations.index', compact(
             'reservations',
-            'state',
+            // 'state',p
             'date_debut',
             'date_fin'
         ));
@@ -102,10 +102,12 @@ class ReservationController extends Controller
                 $occupied[]= $reservation->place;
             }
         }
+        // dd($occupied);
         $places = Place::all()->pluck('id')->toArray();
         $result = array_diff($places, $occupied);
         $index = array_keys($result)[0];
         $place = Place::find($places[$index]);
+        // dd($place);
         $debut = Carbon::parse($debut);
         $fin = Carbon::parse($fin);
         $diff = $debut->diffInDays($fin);
@@ -115,10 +117,14 @@ class ReservationController extends Controller
 
         $debut_heure = $request['debut_heure'];
         $fin_heure = $request['fin_heure'];
+        // dd($debut_heure);
+        // dd($places);
 
         return view('reservations.create2', compact(
             'places',
+            'place',
             "debut",
+            'diff',
             'debut_heure',
             'fin_heure',
             "fin",
@@ -163,6 +169,7 @@ class ReservationController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request['place']);
         $reservation = new Reservation();
         $reservation->hotel = $request['hotel'] ?? '';
         $reservation->place = $request['place'] ?? '1';
@@ -193,12 +200,15 @@ class ReservationController extends Controller
         $reservation->fin = $request['fin'];
         $reservation->debut_heure = $request['debut_heure'];
         $reservation->fin_heure = $request['fin_heure'];
+        try {
+            $reservation->save();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Error ');
+        }
 
-        $reservation->save();
+        // Alert::success('C\'est Fait', 'Votre Réservation a été efféctué ');
 
-        Alert::success('C\'est Fait', 'Votre Réservation a été efféctué Message');
-
-        return redirect()->route('welcome')->with('success', 'reservation inséré avec succés ');
+        return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
     }
 
 

@@ -17,14 +17,45 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- custom css file cdn link  -->
         <link rel="stylesheet" href="{{asset('front2/css/style1.css')}}">
+        <style>
+
+        #global-loader {
+            position: fixed;
+            z-index: 50000;
+            background: #fff;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .loader-img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            top: 45%;
+            margin: 0 auto;
+        }
+
+        </style>
 
     </head>
     <body>
 
+
+    <div id="global-loader">
+			<img src="{{asset('img/logoofficiel.png')}}" class="loader-img" width="150px" alt="Loader">
+		</div>
+
         <!-- header section starts  -->
 
         <header class="header">
-            <a href="#" class="logo"> <img class="logo2" src="{{asset('front2/images/logo.png')}}"></a>
+            <a href="#" class="logo"> <img class="logo2" src="{{asset('img/logoofficiel.png')}}"></a>
             <div class="icons">
                 <div class="fas fa-search" id="search-btn"></div>
                 <div class="fas fa-moon" id="theme-btn"></div>
@@ -75,9 +106,9 @@
                     <h3> Remplir le formulaire</h3>
                     <form action="{{route('reservation.store')}}" method="post" enctype="multipart/form-data" name="formo" id="formo" class="form-horizontal">
                         @csrf
-                        <input type="hidden" name="place" value="{{$place ?? ''}}">
+                        <input type="hidden" name="place" value="{{$place->hotel()['id'] ?? ''}}">
                         <input type="hidden" name="debut" value="{{$debut ?? ''}}">
-                        <input type="hidden" value="1">
+                        <input type="hidden" name="hotel" value="{{$place->hotel ?? ''}}">
                         <input type="hidden" name="fin" value="{{$fin ?? ''}}">
 
                         <div class="formBox">
@@ -104,7 +135,7 @@
                                 </div>
                                 <div class="inputBox">
                                     <span>Téléphone</span>
-                                    <input type="text" placeholder="05*********"
+                                    <input type="number" placeholder="05*********"
                                         name="telephone"    
                                     required>
                                 </div>
@@ -155,30 +186,30 @@
                         <ul class="info">
                             <li>
                                 <span><i class='bx bx-hotel'></i>&nbsp</span>
-                                <span>Hotel :</span>
+                                <span>Hotel :{{$place->hotel()['name'] ?? ''}}</span>
 
                             </li>
                             <li>
                                 <span><i class='bx bx-location-plus'></i>&nbsp</span>
-                                <span>N°Place :</span>
+                                <span>N°Place :{{$place->numero}}</span>
                             </li>
                             <li>
                                 <span><i class='bx bx-hotel'></i>&nbsp</span>
-                                <span>De : </span>
-                                <span> &nbsp Heure :</span>
+                                <span>De </span>
+                                <span> &nbsp Heure :{{$debut ?? ''}}</span>
                             </li>
                             <li>
                                 <span><i class='bx bx-calendar-check'></i></i>&nbsp</span>
-                            <span>à : </span>
-                            <span>&nbsp Heure : </span>
+                            <span>à  </span>
+                            <span> &nbsp Heure :{{$fin ?? ''}}</span>
                         </li>
                         <li>
                             <span><i class='bx bx-time-five'></i></i>&nbsp</span>
-                        <span>Durée : </span>
+                        <span>Durée : {{$diff ?? ''}} Days</span>
                     </li>
                     <li>
                         <span><i class='bx bx-money'></i>&nbsp</span>
-                        <span>Total : </span>
+                        <span>Total : {{$total ?? 1400}} DA</span>
                     </li>
                 </ul>
             </div>
@@ -192,3 +223,12 @@
         </div>
     </div>
 </div>
+
+    </body>
+    <script src="{{asset('front2/js/jquery.min.js')}}"></script>
+
+<script>
+$(window).on("load",function(){
+  $("#global-loader").fadeOut("slow");
+})
+</script>

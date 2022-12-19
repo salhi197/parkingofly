@@ -206,8 +206,26 @@ class ReservationController extends Controller
             return redirect()->back()->with('error', 'Error ');
         }
 
-        Alert::success('C\'est Fait', 'Votre Réservation a été efféctué ');
+        Alert::success('C\'est Fait', 'Votre réservation en cours de confirmation' );
 
+        $reservation = Reservation::find($reservation_id);
+
+        $data = [
+            'subject' => 'Ticket de Reservation',
+            'email' => $reservation->email,
+            'content' => "Hi there Hhhh",
+            'qrcode' => $reservation->qrcode,
+            'ticket' => $reservation->ticket,
+            'debut' => $reservation->debut,
+            'fin' => $reservation->fin
+        ];
+        $logo = [
+            'path' => ''
+        ];
+        Mail::send('email', ['data' => $data, 'css' => '', 'logo' => $logo, 'unsubscribe' => ''], function ($message) use ($data) {
+            $message->to($data['email'])
+                ->subject('Ticket de reservation');
+        });
         return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
     }
 

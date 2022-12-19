@@ -213,7 +213,7 @@
                 <div class="box" data-aos="zoom-in">
                     <span>02</span>
                     <i class="fas fa-plane"></i>
-                    <h3>fastest travel</h3>
+                    <h3>Stationnement disponible 24/7</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Officia, rem.</p>
                 </div>

@@ -228,7 +228,7 @@ class ReservationController extends Controller
                     ->subject('Ticket de reservation');
             });
         } catch (\Throwable $th) {
-            return redirect()->route('welcome')->with('error', 'Error While Sending Mail ');
+            return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter , Error Mail');
         }
         return redirect()->route('welcome')->with('success', 'reservation inséré avec succés , L\'administration Va vous contacter ');
     }

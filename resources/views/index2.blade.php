@@ -382,10 +382,10 @@
 
                 <div class="box" data-aos="fade-up">
                     <h3>contact info</h3>
-                    <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
-                    <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                    <a href="#"> <i class="fas fa-phone"></i> 06 98 44 77 00 </a>
+                    <a href="#"> <i class="fas fa-phone"></i> 06 98 44 77 00 </a>
                     <a href="#"> <i class="fas fa-envelop"></i>
-                        contact@parkingo-fly.com</a>
+                        parkingofly@gmail.com</a>
                     <a href="#"> <i class="fas fa-map-marker-alt"></i> Alger
                     </a>
                 </div>

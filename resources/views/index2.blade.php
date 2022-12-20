@@ -356,12 +356,7 @@
                     <a href="#"> <i class="fas fa-map-marker-alt"></i> Bab
                         Ezzouar
                     </a>
-                    <a href="#"> <i class="fas fa-map-marker-alt"></i>
-                    </a>
-                    <a href="#"> <i class="fas fa-map-marker-alt"></i>
-                    </a>
-                    <a href="#"> <i class="fas fa-map-marker-alt"></i>
-                    </a>
+                    
                 </div>
 
                 <div class="box" data-aos="fade-up">
@@ -386,7 +381,7 @@
                     <a href="#"> <i class="fas fa-phone"></i> 06 98 44 77 00 </a>
                     <a href="#"> <i class="fas fa-envelop"></i>
                         parkingofly@gmail.com</a>
-                    <a href="#"> <i class="fas fa-map-marker-alt"></i> Alger
+                    <a href="#"> <i class="fas fa-map-marker-alt"></i> 210 lot essolh ex charbonnier . Loc 02
                     </a>
                 </div>
 
@@ -400,7 +395,7 @@
 
             </div>
 
-            <div class="credit"> creadet by <span>H-Evolutions & Power Evo</span>
+            <div class="credit"> created by <span>H-Evolutions </span>
                 | all
                 rights reserved </div>
 
